@@ -20,8 +20,7 @@ jobs:
           yarn start
       - name: Convert Video
         uses: FedericoCarboni/setup-ffmpeg@v1
-        id: setup-ffmpeg
-        run: ffmpeg -i ./output/out.png -loop 1 -vcodec libx264 -profile:v baseline -pix_fmt yuv420p -t 1 -r 15 -pattern_type glob ./output/out.mp4 -y
+      - run: ffmpeg -i ./output/out.png -loop 1 -vcodec libx264 -profile:v baseline -pix_fmt yuv420p -t 1 -r 15 -pattern_type glob ./output/out.mp4 -y
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
