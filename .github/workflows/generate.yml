@@ -1,0 +1,30 @@
+name: Generate Video
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: '5 4,16 * * *'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Taipei"
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install and Build
+        run: |
+          yarn
+          yarn start
+      - name: Convert Video
+        uses: FedericoCarboni/setup-ffmpeg@v1
+        id: setup-ffmpeg
+        run: ffmpeg -i ./output/out.png -loop 1 -vcodec libx264 -profile:v baseline -pix_fmt yuv420p -t 1 -r 15 -pattern_type glob ./output/out.mp4 -y
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: output
+          single-commit: true
