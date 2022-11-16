@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 23 - Mostly Cloudy with Snow LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-23---Mostly-Cloudy-with-Snow-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mostly-cloudy-w--Snow" transform="translate(14.000000, 2.000000)" stroke-width="9.6">
+            <path d="M86.4,0 L86.4,33.6" id="Path" stroke="#FF8700"></path>
+            <path d="M33.6,86.064 L0,86.064" id="Path" stroke="#FF8700"></path>
+            <path d="M49.008,48.672 L25.248,24.912" id="Path" stroke="#FF8700"></path>
+            <path d="M114.096,59.328 C104.276431,49.2108075 89.7022766,45.288424 76.1312116,49.1104289 C62.5601467,52.9324338 52.1749534,63.8840921 49.0784125,77.6388353 C45.9818715,91.3935785 50.6720334,105.739081 61.296,115.008" id="Path" stroke="#FF8700"></path>
+            <path d="M230.496,216.096 L230.496,273.6" id="Path" stroke="#288ADB"></path>
+            <path d="M205.584,230.496 L255.36,259.2" id="Path" stroke="#288ADB"></path>
+            <path d="M205.584,259.2 L255.36,230.496" id="Path" stroke="#288ADB"></path>
+            <path d="M62.352,216.096 L62.352,273.6" id="Path" stroke="#288ADB"></path>
+            <path d="M37.488,230.496 L87.264,259.2" id="Path" stroke="#288ADB"></path>
+            <path d="M37.488,259.2 L87.264,230.496" id="Path" stroke="#288ADB"></path>
+            <path d="M204.096,186.864 C234.582118,186.864 259.296,162.150118 259.296,131.664 C259.296,101.177882 234.582118,76.464 204.096,76.464 L194.64,76.464 C177.002934,55.6992877 148.574004,47.6380876 122.662496,56.0543305 C96.7509885,64.4705733 78.4850258,87.6986082 76.416,114.864 L64.8480008,114.864 C44.9657493,114.864 28.8480008,130.981749 28.8480008,150.864 C28.8480008,170.746251 44.9657493,186.864 64.8480008,186.864 L204.096,186.864 Z" id="Path" stroke="#BABABA"></path>
+            <path d="M146.448,206.4 L146.448,283.2" id="Path" stroke="#288ADB"></path>
+            <path d="M113.184,225.6 L179.664,264" id="Path" stroke="#288ADB"></path>
+            <path d="M113.184,264 L179.664,225.6" id="Path" stroke="#288ADB"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 18 - Rain LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-18---Rain-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Rain" transform="translate(26.000000, 31.000000)" stroke-width="9.79591837">
+            <path d="M178.873469,137.697959 C209.981753,137.697959 235.2,112.479712 235.2,81.3714286 C235.2,50.2631447 209.981753,25.044898 178.873469,25.044898 L169.22449,25.044898 C151.227484,3.85641604 122.218371,-4.36929839 95.7780574,4.21870454 C69.3377434,12.8067075 50.699006,36.5087839 48.5877551,64.2285714 L36.7836735,64.2285714 C16.4956626,64.2285719 0.048980366,80.6752544 0.048980366,100.963265 C0.048980366,121.251276 16.4956626,137.697959 36.7836735,137.697959 L178.873469,137.697959 Z" id="Path" stroke="#BABABA"></path>
+            <path d="M24.4408163,203.428571 L51.2816327,157.436735" id="Path" stroke="#288ADB"></path>
+            <path d="M95.6571429,203.428571 L122.497959,157.436735" id="Path" stroke="#288ADB"></path>
+            <path d="M46.5306122,226.644898 L86.8897959,157.436735" id="Path" stroke="#288ADB"></path>
+            <path d="M168.293878,203.428571 L195.134694,157.436735" id="Path" stroke="#288ADB"></path>
+            <path d="M119.118367,226.644898 L159.526531,157.436735" id="Path" stroke="#288ADB"></path>
+        </g>
+    </g>
+</svg>

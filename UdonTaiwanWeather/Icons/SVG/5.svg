@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>ICONS / Forecast / Color / 05 - Hazy Sunshine LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-05---Hazy-Sunshine-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Hazy-Sunshine" transform="translate(12.000000, 36.000000)" stroke-width="9.6">
+            <path d="M144,0 L144,48" id="Path" stroke="#FF8700"></path>
+            <path d="M0,144 L48,144" id="Path" stroke="#FF8700"></path>
+            <path d="M211.872,76.128 L245.808,42.192" id="Path" stroke="#FF8700"></path>
+            <path d="M76.128,76.128 L42.192,42.192" id="Path" stroke="#FF8700"></path>
+            <path d="M110.4,212.928 L177.6,212.928 C209.768277,197.277051 226.870402,161.488661 218.839983,126.628043 C210.809563,91.7674262 179.773597,67.0680261 144,67.0680261 C108.226403,67.0680261 77.1904366,91.7674262 69.1600174,126.628043 C61.1295981,161.488661 78.2317226,197.277051 110.4,212.928 Z" id="Path" stroke="#FF8700"></path>
+            <path d="M263.856,212.928 L24,212.928" id="Path" stroke="#BABABA"></path>
+            <path d="M120,144 L264,144" id="Path" stroke="#BABABA"></path>
+            <path d="M24,177.6 L167.952,177.6" id="Path" stroke="#BABABA"></path>
+        </g>
+    </g>
+</svg>

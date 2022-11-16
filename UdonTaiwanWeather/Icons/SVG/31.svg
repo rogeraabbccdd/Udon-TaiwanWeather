@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 31 - Cold LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-31---Cold-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Cold" transform="translate(94.000000, 13.000000)" stroke-width="9.90909091">
+            <circle id="Oval" stroke="#288ADB" cx="50.5" cy="212.995909" r="19.8677273"></circle>
+            <path d="M75.2727273,169.990455 L75.2727273,24.7727273 C75.2727273,11.0911278 64.1815995,0 50.5,0 C36.8184005,0 25.7272727,11.0911278 25.7272727,24.7727273 L25.7272727,169.990455 C6.30703923,181.202732 -3.16113579,204.060928 2.64276588,225.721384 C8.44666755,247.38184 28.0754459,262.443531 50.5,262.443531 C72.9245541,262.443531 92.5533324,247.38184 98.3572341,225.721384 C104.161136,204.060928 94.6929608,181.202732 75.2727273,169.990455 L75.2727273,169.990455 Z" id="Path" stroke="#686763"></path>
+            <path d="M99.9463636,34.6322727 L75.2727273,34.6322727" id="Path" stroke="#686763"></path>
+            <path d="M99.9463636,69.3140909 L75.2727273,69.3140909" id="Path" stroke="#686763"></path>
+            <path d="M99.9463636,103.995909 L75.2727273,103.995909" id="Path" stroke="#686763"></path>
+            <path d="M50.5,193.128182 L50.5,153.491818" id="Path" stroke="#288ADB"></path>
+        </g>
+    </g>
+</svg>

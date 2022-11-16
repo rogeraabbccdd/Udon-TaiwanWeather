@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 12 - Showers LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-12---Showers-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Showers" transform="translate(24.000000, 28.000000)" stroke-width="10">
+            <path d="M240,83.15 C240,67.9000518 233.941982,53.2747018 223.15864,42.4913601 C212.375298,31.7080183 197.749948,25.65 182.5,25.65 L172.75,25.65 C154.378056,4.02009137 124.764588,-4.37699211 97.7734336,4.38992756 C70.7822797,13.1568472 51.7552353,37.3527169 49.6,65.65 L37.5500008,65.65 C16.8393222,65.6500004 0.0500007903,82.4393222 0.0500007903,103.15 C0.0500007903,123.860678 16.8393222,140.65 37.5500008,140.65 L182.550001,140.65 C214.286845,140.622403 240,114.886857 240,83.15 Z" id="Path" stroke="#BABABA"></path>
+            <path d="M59.4,207.75 L86.8,160.8" id="Path" stroke="#288ADB"></path>
+            <path d="M132.1,207.75 L159.5,160.8" id="Path" stroke="#288ADB"></path>
+            <path d="M81.95,231.45 L123.15,160.8" id="Path" stroke="#288ADB"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 01 - Sunny LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-01---Sunny-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sunny" stroke="#FF8700" stroke-width="9.6">
+            <path d="M144,0 L144,48" id="Path"></path>
+            <path d="M144,240 L144,288" id="Path"></path>
+            <path d="M0,144 L48,144" id="Path"></path>
+            <path d="M211.872,76.128 L245.808,42.192" id="Path"></path>
+            <path d="M245.808,245.808 L211.872,211.872" id="Path"></path>
+            <path d="M76.128,76.128 L42.192,42.192" id="Path"></path>
+            <circle id="Oval" cx="144" cy="144" r="76.8"></circle>
+            <path d="M76.128,211.872 L42.192,245.808" id="Path"></path>
+            <path d="M240,144 L288,144" id="Path"></path>
+        </g>
+    </g>
+</svg>

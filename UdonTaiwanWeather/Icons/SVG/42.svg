@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="288px" height="288px" viewBox="0 0 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>ICONS / Forecast / Color / 42 - Mostly Cloudy with Thundershowers Night LK</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ICONS-/-Forecast-/-Color-/-42---Mostly-Cloudy-with-Thundershowers-Night-LK" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mostly-cloudy-w--Thunderstorms" transform="translate(15.000000, 6.000000)" stroke-width="9.70149004">
+            <path d="M220.757406,125.537281 C235.860347,120.920025 248.77176,110.973583 257.089486,97.5484824 C231.726009,103.263036 205.463178,92.7622294 191.031452,71.1361485 C176.599726,49.5100675 176.981807,21.2283198 191.992488,3.55271368e-15 C163.197272,4.34321461 140.835176,27.3601005 137.324592,56.2686422" id="Path" stroke="#686763" stroke-linejoin="bevel"></path>
+            <path d="M94.6380354,188.839504 L55.8320752,188.839504 C25.0236614,188.772529 0.102801263,163.743081 0.169641395,132.934667 C0.236750888,102.126254 25.2661987,77.2053934 56.0746124,77.2723682 L65.4365503,77.2723682 C83.2669914,56.3229778 111.974757,48.2002482 138.138198,56.7017726 C164.30164,65.203297 182.751467,88.6493712 184.861893,116.078328 L196.600696,116.078328 C216.693139,116.078328 232.981283,132.366472 232.981283,152.458916 C232.981283,172.55136 216.693139,188.839504 196.600696,188.839504 L134.947726,188.839504" id="Path" stroke="#BABABA"></path>
+            <polyline id="Path" stroke="#FF8700" points="104.145496 279.305898 141.73877 214.936512 99.7798251 214.936512 137.324592 150.567125"></polyline>
+        </g>
+    </g>
+</svg>
