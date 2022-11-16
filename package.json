@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "video": "ffmpeg -i ./output/out.png -loop 1 -vcodec libx264 -profile:v baseline -pix_fmt yuv420p -t 1 -r 15 -pattern_type glob ./output/out.mp4 -y"
+    "video": "ffmpeg -loop 1 -i ./output/out.png -vcodec libx264 -profile:v baseline -pix_fmt yuv420p -t 1 -r 15 ./output/out.mp4 -y"
   },
   "dependencies": {
     "axios": "^1.1.3",
