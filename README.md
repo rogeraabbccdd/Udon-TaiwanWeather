@@ -1,6 +1,6 @@
 # VRChat 台灣一週天氣預報
 在 VRChat 顯示台灣各縣市未來一週天氣預報，資料來源為 [accuweather.com](https://www.accuweather.com/)  
-目前資料每六個小時更新一次  
+目前資料每兩個小時更新一次  
 <p align="center">
   <img src="./screenshots/screenshot.png">
 </p>
