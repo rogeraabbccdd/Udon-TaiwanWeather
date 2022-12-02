@@ -16,7 +16,7 @@ using VRC.SDK3.Components.Video;
 [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 public class WeatherVideo : UdonSharpBehaviour
 {
-    public readonly string version = "v1.0.0";
+    public readonly string version = "v1.0.1";
     [Header("渲染空白材質")]
     public Texture2D texture;
     [Header("顯示 UI")]
@@ -43,6 +43,12 @@ public class WeatherVideo : UdonSharpBehaviour
     private string[] namesDay = new string[] { "日", "一", "二", "三", "四", "五", "六" };
     private string textDecoded = "";
     private bool loading = true;
+    private int readingY = -1;
+    private string textBinary = "";
+    private int count = 0;
+    private string temp = "";
+    private char[] c;
+    private int byteIndex = 0;
     private void Start()
     {
         transform.position = new Vector3(0, float.MaxValue, 0);
@@ -97,6 +103,8 @@ public class WeatherVideo : UdonSharpBehaviour
         objLoading = canvas.transform.Find("Loading").gameObject;
 
         dropDown = canvas.transform.Find("Top/Dropdown").GetComponent<Dropdown>();
+
+        c = new char[(texture.height / sizePixel) * (texture.width / sizePixel)];
 
         SendCustomEventDelayedSeconds("LoadVideo", 5);
     }
@@ -155,38 +163,54 @@ public class WeatherVideo : UdonSharpBehaviour
         texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0, false);
         texture.Apply();
 
+        // Reset decode variables
+        c = new char[(texture.height / sizePixel) * (texture.width / sizePixel)];
+        byteIndex = 0;
+        temp = "";
+        count = 0;
+        textBinary = "";
+        textDecoded = "";
+        readingY = texture.height - (sizePixel / 2);
+
         // Decode pixel to string
-        string textBinary = "";
-        int count = 0;
-        string temp = "";
-        byte[] bytes = new byte[(texture.height / sizePixel) * (texture.width / sizePixel)];
-        int byteIndex = 0;
-        for (int y = texture.height - (sizePixel / 2); y >= 0; y -= sizePixel)
+        SendCustomEventDelayedSeconds("DecodeVideo", 1);
+    }
+    public void DecodeVideo ()
+    {
+        bool end = false;
+        for (int x = (sizePixel / 2); x <= texture.width; x += sizePixel)
         {
-            for (int x = (sizePixel / 2); x <= texture.width; x += sizePixel)
+            Color color = texture.GetPixel(x, readingY);
+            if (color.b > 0.5f && color.g < 0.5f && color.r < 0.5f)
             {
-                Color color = texture.GetPixel(x, y);
-                if (color.b > 0.5 && color.g < 0.5 && color.r < 0.5)  continue;
-                string data = color.r > 0.5 ? "1" : "0";
-                textBinary += data;
-                temp += data;
-                count++;
-                if (count % 8 == 0)
-                {
-                    bytes[byteIndex] = Convert.ToByte(temp, 2);
-                    byteIndex++;
-                    temp = "";
-                }
+                end = true;
+                break;
+            }
+            string data = color.r > 0.5 ? "1" : "0";
+            textBinary += data;
+            temp += data;
+            count++;
+            if (count % 8 == 0)
+            {
+                c[byteIndex] = Convert.ToChar(Convert.ToByte(temp, 2));
+                byteIndex++;
+                temp = "";
             }
         }
+        readingY -= sizePixel;
 
-        // From Udon Decode Lib
-        // https://github.com/Roliga/UdonDecodeLib/blob/master/UdonDecodeLib.cs#L31-L37
-        char[] c = new char[bytes.Length];
-        for (int i = 0; i < bytes.Length; i++)
+        // Delay 3 frames to reduce lag
+        if (readingY >= 0 && !end)
         {
-            c[i] = Convert.ToChar(bytes[i]);
+            SendCustomEventDelayedFrames("DecodeVideo", 3);
         }
+        else
+        {
+            SendCustomEventDelayedFrames("OnVideoDecoded", 3);
+        }
+    }
+    public void OnVideoDecoded ()
+    {
         textDecoded = (new string(c)).Trim(char.Parse("\0"));
 
 #if DEBUG_LOG
@@ -194,7 +218,6 @@ public class WeatherVideo : UdonSharpBehaviour
         Debug.Log("Decoded Weather Text: " + textDecoded);
 #endif
 
-        dropDown.value = 1;
         if (defaultCity.Length == 0)
         {
             defaultCity = "台北市";
@@ -207,12 +230,10 @@ public class WeatherVideo : UdonSharpBehaviour
                 if (namesCity[i] == defaultCity)
                 {
                     dropDown.value = i;
+                    break;
                 }
             }
         }
-
-        // Render canvas
-        RenderCanvas();
 
         // Disable loading UI
         objLoading.SetActive(false);
