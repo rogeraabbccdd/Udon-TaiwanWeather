@@ -10,15 +10,13 @@ using VRC.SDKBase;
 using VRC.Udon;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Components.Video;
+using VRC.SDK3.StringLoading;
+using VRC.Udon.Common.Interfaces;
 
-[RequireComponent(typeof(VRCUnityVideoPlayer))]
-[RequireComponent(typeof(Camera))]
 [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 public class WeatherVideo : UdonSharpBehaviour
 {
-    public readonly string version = "v1.0.1";
-    [Header("渲染空白材質")]
-    public Texture2D texture;
+    public readonly string version = "v1.1.0";
     [Header("顯示 UI")]
     public Canvas canvas;
     [Header("天氣圖示")]
@@ -26,8 +24,6 @@ public class WeatherVideo : UdonSharpBehaviour
     [Header("預設顯示城市，可用名稱請參見說明文件")]
     public string defaultCity;
     private Dropdown dropDown;
-    private VRCUnityVideoPlayer videoPlayer;
-    private Camera cam;
     private Text[] textDate = new Text[7];
     private Text[] textTempture = new Text[7];
     private Text[] textRain = new Text[7];
@@ -35,28 +31,15 @@ public class WeatherVideo : UdonSharpBehaviour
     private Text textVersion;
     private Image[] imageWeather = new Image[7];
     private GameObject objLoading;
-    private VRCUrl url = new VRCUrl("https://raw.githubusercontent.com/rogeraabbccdd/Udon-TaiwanWeather/gh-pages/out.mp4");
-    private bool rendered = true;
-    private int sizePixel = 4;
-    private int sizeTexture = 1024;
+    private VRCUrl url = new VRCUrl("https://rogeraabbccdd.github.io/Udon-TaiwanWeather/weathers_str.txt");
     private string[] namesCity = new string[] {"基隆市", "台北市", "新北市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "台中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "台南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "台東縣", "澎湖縣", "金門縣", "連江縣"};
     private string[] namesDay = new string[] { "日", "一", "二", "三", "四", "五", "六" };
     private string textDecoded = "";
     private bool loading = true;
-    private int readingY = -1;
-    private string textBinary = "";
-    private int count = 0;
-    private string temp = "";
-    private char[] c;
-    private int byteIndex = 0;
+    private IUdonEventReceiver _udonEventReceiver;
     private void Start()
     {
         transform.position = new Vector3(0, float.MaxValue, 0);
-
-        videoPlayer = (VRCUnityVideoPlayer)GetComponent(typeof(VRCUnityVideoPlayer));
-        videoPlayer.Loop = false;
-
-        cam = (Camera)GetComponent(typeof(Camera));
 
         canvas.transform.Find("Footer/Version").GetComponent<Text>().text = version;
 
@@ -104,119 +87,24 @@ public class WeatherVideo : UdonSharpBehaviour
 
         dropDown = canvas.transform.Find("Top/Dropdown").GetComponent<Dropdown>();
 
-        c = new char[(texture.height / sizePixel) * (texture.width / sizePixel)];
-
-        SendCustomEventDelayedSeconds("LoadVideo", 5);
+        _udonEventReceiver = (IUdonEventReceiver)this;
+        VRCStringDownloader.LoadUrl(url, _udonEventReceiver);
     }
     public void LoadVideo ()
     {
         loading = true;
         objLoading.SetActive(true);
         objLoading.transform.Find("Text").GetComponent<Text>().text = "天氣資料載入中";
-        videoPlayer.LoadURL(url);
+        VRCStringDownloader.LoadUrl(url, _udonEventReceiver);
 
 #if DEBUG_LOG
-        Debug.Log("Load Weather Video");
+        Debug.Log("Load Weather");
 #endif
 
     }
-    public override void OnVideoReady ()
+    public override void OnStringLoadSuccess (IVRCStringDownload result)
     {
-
-#if DEBUG_LOG
-        Debug.Log("On Weather VideoReady");
-#endif
-        // Capture video frame to render texture
-        SendCustomEvent(nameof(EnableCam));
-        SendCustomEventDelayedFrames(nameof(DisableCam), 2);
-    }
-    public override void OnVideoError (VideoError videoError)
-    {
-        videoPlayer.Stop();
-        objLoading.transform.Find("Text").GetComponent<Text>().text = "天氣載入失敗，五秒後重試";
-        loading = false;
-
-#if DEBUG_LOG
-        Debug.Log("On Weather VideoError: " + videoError);
-#endif
-        SendCustomEventDelayedSeconds("Reload", 5);
-    }
-    public void EnableCam()
-    {
-        cam.enabled = true;
-        rendered = false;
-    }
-    public void DisableCam()
-    {
-        cam.enabled = false;
-    }
-    private void OnPostRender()
-    {
-        if (rendered) return;
-        rendered = true;
-
-#if DEBUG_LOG
-        Debug.Log("On Weather PostRender");
-#endif
-
-        // Read pixel from camera render texture
-        texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0, false);
-        texture.Apply();
-
-        // Reset decode variables
-        c = new char[(texture.height / sizePixel) * (texture.width / sizePixel)];
-        byteIndex = 0;
-        temp = "";
-        count = 0;
-        textBinary = "";
-        textDecoded = "";
-        readingY = texture.height - (sizePixel / 2);
-
-        // Decode pixel to string
-        SendCustomEventDelayedSeconds("DecodeVideo", 1);
-    }
-    public void DecodeVideo ()
-    {
-        bool end = false;
-        for (int x = (sizePixel / 2); x <= texture.width; x += sizePixel)
-        {
-            Color color = texture.GetPixel(x, readingY);
-            if (color.b > 0.5f && color.g < 0.5f && color.r < 0.5f)
-            {
-                end = true;
-                break;
-            }
-            string data = color.r > 0.5 ? "1" : "0";
-            textBinary += data;
-            temp += data;
-            count++;
-            if (count % 8 == 0)
-            {
-                c[byteIndex] = Convert.ToChar(Convert.ToByte(temp, 2));
-                byteIndex++;
-                temp = "";
-            }
-        }
-        readingY -= sizePixel;
-
-        // Delay 3 frames to reduce lag
-        if (readingY >= 0 && !end)
-        {
-            SendCustomEventDelayedFrames("DecodeVideo", 3);
-        }
-        else
-        {
-            SendCustomEventDelayedFrames("OnVideoDecoded", 3);
-        }
-    }
-    public void OnVideoDecoded ()
-    {
-        textDecoded = (new string(c)).Trim(char.Parse("\0"));
-
-#if DEBUG_LOG
-        Debug.Log("Decoded Weather Binary: " + textBinary);
-        Debug.Log("Decoded Weather Text: " + textDecoded);
-#endif
+        textDecoded = result.Result;
 
         if (defaultCity.Length == 0)
         {
@@ -239,6 +127,16 @@ public class WeatherVideo : UdonSharpBehaviour
         objLoading.SetActive(false);
 
         loading = false;
+        RenderCanvas();
+    }
+    public override void OnStringLoadError (IVRCStringDownload result)
+    {
+        objLoading.transform.Find("Text").GetComponent<Text>().text = "天氣載入失敗，五秒後重試";
+        loading = false;
+        SendCustomEventDelayedSeconds("Reload", 5);
+#if DEBUG_LOG
+        Debug.Log($"OnStringLoadError {result.Error}");
+#endif
     }
     private void RenderCanvas ()
     {

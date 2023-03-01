@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 6759095419728963412, guid: 8894fa7e4588a5c4fab98453e558847d,
         type: 3}
       propertyPath: NetworkIDs.Array.data[2].ID
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6759095419728963412, guid: 8894fa7e4588a5c4fab98453e558847d,
         type: 3}
@@ -1110,7 +1110,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "1.0.0 (2022/11/17)\n- \u516C\u958B\u767C\u5E03\n\n1.0.1 (2022/12/02)\n-
-    \u512A\u5316\u8CC7\u6599\u89E3\u8B6F\u7A0B\u5F0F\u78BC\n- \u964D\u4F4E\u8F09\u5165\u901F\u5EA6\u4EE5\u6539\u5584\u5361\u9813\u554F\u984C"
+    \u512A\u5316\u8CC7\u6599\u89E3\u8B6F\u7A0B\u5F0F\u78BC\n- \u964D\u4F4E\u8F09\u5165\u901F\u5EA6\u4EE5\u6539\u5584\u5361\u9813\u554F\u984C\n\n1.1.0
+    (2023/03/01)\n- \u4EE5 VRCStringDownloader \u6539\u5BEB\n- \u6700\u4F4E\u9700\u6C42\u70BA
+    VRCSDK 3.1.11 \u53CA UdonSharp 1.1.7 \u4EE5\u4E0A"
 --- !u!222 &1854146014
 CanvasRenderer:
   m_ObjectHideFlags: 0
