@@ -11,7 +11,8 @@
 - 安裝 VRChat World SDK3
 - 安裝 UdonSharp
 - 至 [Releases](https://github.com/rogeraabbccdd/Udon-TaiwanWeather/releases) 下載 unitypackage 後匯入至專案
-- UdonSharp 0.x 需手動修改 prefab 設定
+- **v1.1.0 以上需要 VRCSDK 3.1.11 及 UdonSharp 1.1.7 以上版本**
+- 若使用 v1.0.0 及 v1.0.1 版本且 UdonSharp 為 0.x 需手動修改 prefab 設定
   - 開啟 `Udon Taiwan Weather.prefab`
   - 至 `Udon Taiwan Weather/Data`，找到 `Weather Video (Script)` 元件，點 `Convert To UdonBehaviour`
   - 移除 `Udon Taiwan Weather/Data` 重複的、沒有預設設定值的 `UdonBehaviour` 元件
