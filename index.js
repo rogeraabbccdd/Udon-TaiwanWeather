@@ -109,7 +109,7 @@ const main = async () => {
     }
     if (!fs.existsSync('./output')) fs.mkdirSync('./output')
     // fs.writeFileSync('./output/weathers_bin.txt', binString)
-    // fs.writeFileSync('./output/weathers_str.txt', combined)
+    fs.writeFileSync('./output/weathers_str.txt', combined)
     await PImage.encodePNGToStream(img, fs.createWriteStream('./output/out.png'))
   } catch (error) {
     throw new Error(error.message)
