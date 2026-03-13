@@ -14,20 +14,16 @@ jobs:
           timezoneLinux: "Asia/Taipei"
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/cache@v4
-        id: yarn-cache
+      - uses: oven-sh/setup-bun@v2
         with:
-          path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          bun-version: latest
       - name: Install and Build
         run: |
-          yarn
-          yarn start
+          bun i
+          bun start
       - name: Add ffmpeg
         uses: FedericoCarboni/setup-ffmpeg@v1
-      - run: yarn video
+      - run: bun video
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
