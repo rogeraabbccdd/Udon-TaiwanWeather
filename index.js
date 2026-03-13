@@ -1,4 +1,4 @@
-const axios = require('axios')
+const puppeteer = require('puppeteer')
 const PImage = require('pureimage')
 const fs = require('fs')
 const cheerio = require('cheerio')
@@ -55,17 +55,20 @@ const days = ['日', '一', '二', '三', '四', '五', '六']
 
 const main = async () => {
   try {
-    // Fetch weather data
-    const requests = apis.map(async (api) => {
-      const { data: html } = await axios.get(api, {
-        headers: {
-          cookie: 'awx_user=tp:C',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'accept-language': 'zh-TW,zh;q=0.9,ja-JP;q=0.8,ja;q=0.7,en-US;q=0.6,en;q=0.5,ko;q=0.4',
-          accept: 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36'
-        }
+    const results = []
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
+
+    for (const api of apis) {
+      console.log(`Fetching ${api}...`)
+      const page = await browser.newPage()
+      await page.setUserAgent({
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36'
       })
+      await page.goto(api, { waitUntil: 'networkidle2' })
+      const html = await page.content()
       const $ = cheerio.load(html)
       const data = []
       $('.daily-wrapper').each(function (i) {
@@ -88,9 +91,11 @@ const main = async () => {
         )
         return true
       })
-      return data.join('|')
-    })
-    const results = await Promise.all(requests)
+      results.push(data.join('|'))
+      await page.close()
+    }
+    await browser.close()
+
     const combined = results.join('-')
     // Convert data ascii binary string
     const binString = combined.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join('')
@@ -117,3 +122,4 @@ const main = async () => {
 }
 
 main()
+
