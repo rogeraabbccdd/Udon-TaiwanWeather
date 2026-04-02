@@ -79,7 +79,7 @@ const main = async () => {
           // day
           days.indexOf($(this).find('.module-header.dow.date').text().trim().replace('周', '')) + ',' +
           // weather
-          $(this).find('svg.icon').attr('data-src').trim().replace('/images/weathericons/', '').replace('.svg', '') + ',' +
+          parseInt($(this).find('img.icon').attr('src').trim().replace('/images/weathericons/v2a/', '').replace('.svg', ''), 10) + ',' +
           // text
           $(this).find('.phrase').text().trim().split('').map(char => '\\u' + ('0000' + char.charCodeAt(0).toString(16).toUpperCase()).slice(-4)).join('') + ',' +
           // temperature high
@@ -122,4 +122,3 @@ const main = async () => {
 }
 
 main()
-
